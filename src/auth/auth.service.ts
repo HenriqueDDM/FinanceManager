@@ -15,8 +15,7 @@ export class AuthService {
     const passswordIsMatch = await bcrypt.compare(passsword, user.password);
     if (user && passswordIsMatch) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { id, password, ...result } = user;
-      return result;
+      return user;
     }
     throw new UnauthorizedException('User or password are incorrect!');
   }

@@ -26,10 +26,14 @@ export class UserService {
       email: createUserDto.email,
       password: hashPassword,
     });
-    const token = this.jwtService.sign({ email: createUserDto.email });
+
+    const token = this.jwtService.sign({
+      email: createUserDto.email,
+    });
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { id, password, ...result } = user;
-    return { token, result };
+    const { password, ...result } = user;
+    return { result, token };
   }
 
   async findOne(email: string) {
