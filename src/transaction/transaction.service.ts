@@ -35,6 +35,9 @@ export class TransactionService {
       where: {
         user: { id },
       },
+      relations: {
+        category: true,
+      },
       order: {
         created_at: 'DESC',
       },
